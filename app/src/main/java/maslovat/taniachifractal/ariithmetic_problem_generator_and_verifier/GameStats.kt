@@ -19,6 +19,6 @@ class GameStats
     {
         var output =  (solvedCorrect.toDouble()/getProblemSolvedCount())
         if (output.isNaN()) output = 0.0
-        return output
+        return output*100
     }
 }

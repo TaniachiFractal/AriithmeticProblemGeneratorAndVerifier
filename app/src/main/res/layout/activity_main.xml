@@ -9,7 +9,112 @@
     android:padding="10sp"
     >
 
+    <!--Problem-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginBottom="30sp"
+        android:layout_marginTop="20sp"
+        >
+        <TextView
+            android:id="@+id/firstNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            style="@style/ProblemOutput"
+            />
+        <TextView
+            android:id="@+id/operator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            style="@style/ProblemOutput"
+            />
+        <TextView
+            android:id="@+id/secondNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            style="@style/ProblemOutput"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="="
+            style="@style/ProblemOutput"
+            />
+        <TextView
+            android:id="@+id/solutionNum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            style="@style/ProblemOutput"
+            />
+    </LinearLayout>
 
+    <!--bt correct/incorrect-->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btCorrect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Верно"
+            android:enabled="false"
+            />
+
+        <Button
+            android:id="@+id/btIncorrect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:orientation="vertical"
+            android:text="Неверно"
+            android:enabled="false"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--  bt start  -->
+    <Button
+        android:id="@+id/btStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="vertical"
+        android:text="СТАРТ"/>
+
+    <!--  recent  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tbPercentSolvedCorrectly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0.00"
+            android:textSize="80sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="%"
+            android:textSize="80sp" />
+    </LinearLayout>
+
+    <!--  solved count  -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50sp">
@@ -24,6 +129,7 @@
             android:text="0"/>
     </LinearLayout>
 
+    <!--  solved wrong/right count  -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -66,6 +172,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--  time  -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -74,6 +181,7 @@
         android:textSize="35sp"
         />
 
+    <!--  min max avg time  -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -136,100 +244,5 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        >
-    <TextView
-        android:id="@+id/tbPercentSolvedCorrectly"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0.00"
-        android:gravity="center"
-        android:textSize="80sp"
-        />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="%"
-            android:gravity="center"
-            android:textSize="80sp"
-            />
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="30sp"
-        >
-        <TextView
-            android:id="@+id/firstNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            style="@style/ProblemOutput"
-            />
-        <TextView
-            android:id="@+id/operator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            style="@style/ProblemOutput"
-            />
-        <TextView
-            android:id="@+id/secondNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            style="@style/ProblemOutput"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="="
-            style="@style/ProblemOutput"
-            />
-        <TextView
-            android:id="@+id/solutionNum"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            style="@style/ProblemOutput"
-            />
-    </LinearLayout>
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btCorrect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="Верно"/>
-
-        <Button
-            android:id="@+id/btIncorrect"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:orientation="vertical"
-            android:text="Неверно"/>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <Button
-        android:id="@+id/btStart"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:orientation="vertical"
-        android:text="СТАРТ"/>
 </LinearLayout>
