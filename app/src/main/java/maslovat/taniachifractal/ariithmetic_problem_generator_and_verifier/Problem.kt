@@ -10,9 +10,9 @@ public class Problem(firstNum_: Int, operator_: Int, secondNum_: Int, correct_: 
 {
     private var solution = 0.0
 
-     var firstNum = 0
-     var operator = PLUS_ID
-     var secondNum = 0
+    var firstNum = 0
+    var operator = PLUS_ID
+    var secondNum = 0
     private var correct = false
 
     /**Set solution if correct; Generate solution if incorrect*/

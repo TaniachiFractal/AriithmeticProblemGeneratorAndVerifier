@@ -173,34 +173,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--  time  -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        >
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="ВРЕМЯ "
-            android:gravity="center"
-            android:textSize="35sp"
+            android:text="ВРЕМЯ, сек"
+            android:layout_gravity="center"
             />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="00.00"
-            android:textSize="35sp"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" сек."
-            android:gravity="center"
-            android:textSize="35sp"
-            />
-    </LinearLayout>
+
     <!--  min max avg time  -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -217,7 +196,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Мин."/>
+                android:text="Миним."/>
             <TextView
                 android:id="@+id/tbMinTime"
                 android:layout_width="wrap_content"

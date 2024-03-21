@@ -3,6 +3,9 @@ package maslovat.taniachifractal.ariithmetic_problem_generator_and_verifier
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import maslovat.taniachifractal.ariithmetic_problem_generator_and_verifier.databinding.ActivityMainBinding
+import java.util.Timer
+import java.util.TimerTask
+import kotlin.concurrent.schedule
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +16,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var problem: Problem
     /**Game Stats*/
     private lateinit var gameStats: GameStats
+
+    /**Timer object*/
+    private lateinit var timer: Timer
+
+    /**The current time*/
+    var currTime = 0
 
     /**Load*/
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         gameStats = GameStats()
         loadStats()
 
+        timer = Timer()
     }
     /**Save data*/
     override fun onSaveInstanceState(outState: Bundle) {
@@ -41,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         // save stats
         outState.putInt("crt",gameStats.solvedCorrect)
         outState.putInt("inc",gameStats.solvedIncorrect)
-        outState.putDouble("min",gameStats.minTime)
-        outState.putDouble("max",gameStats.maxTime)
+        outState.putInt("min",gameStats.minTime)
+        outState.putInt("max",gameStats.maxTime)
     }
     /**Restore data*/
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -58,12 +68,12 @@ class MainActivity : AppCompatActivity() {
         gameStats = GameStats()
         gameStats.solvedCorrect = savedInstanceState.getInt("crt")
         gameStats.solvedIncorrect = savedInstanceState.getInt("inc")
+        gameStats.minTime = savedInstanceState.getInt("min")
+        gameStats.maxTime = savedInstanceState.getInt("max")
 
         loadStats()
         loadProblem()
-        initGameFields()
     }
-
 
     /**Put stat data to text boxes*/
     private fun loadStats()
@@ -101,15 +111,38 @@ class MainActivity : AppCompatActivity() {
         fld.btStart.isEnabled = false
     }
 
+    /** Increment curr time and put in into a text box; Every second */
+    private fun timerTick()
+    {
+        currTime+=1
+    }
+    private fun startTimer()
+    {
+        timer = Timer()
+        timer.schedule(object: TimerTask(){
+            override fun run()
+            {
+                timerTick()
+            }
+        },0,1000)
+    }
+    private fun endTimer()
+    {
+        timer.cancel()
+        gameStats.newTime(currTime-1); loadStats();
+        currTime=0
+    }
+
     /**Start game*/
     private fun btStart_Click()
     {
         generateProblem();loadProblem();initGameFields()
+        startTimer()
     }
-
     /**Increment solved wrong/right counters and stop game*/
     private fun checkButtons_click(correct: Boolean)
     {
+        endTimer()
         fld.btStart.isEnabled = true; fld.btStart.text = "СТАРТ"
         fld.btCorrect.isEnabled = false
         fld.btIncorrect.isEnabled = false
